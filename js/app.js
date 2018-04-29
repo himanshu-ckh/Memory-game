@@ -1,11 +1,18 @@
 /*List to store all the element*/
 let list = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'];
+/*deck for all cards*/
 let deck = document.getElementById("dec");
+/*all cards*/
 let cards = document.getElementsByClassName("card");
+/*counter for moves*/
 let counter = document.querySelector(".moves");
+/*stars*/
 let stars = document.querySelectorAll(".fa-star");
+/*timer for time*/
 let timer = document.querySelector(".timer");
+/*modal for final display of result*/
 let modal = document.getElementById("modalDisplay");
+/*close icon in modal to close the window*/
 let closeicon = document.querySelector(".close");
 let count = 0;
 let cardLength = 0;
@@ -39,10 +46,12 @@ function startMemoryGame() {
 	moves = 0;
 	matchedCard = [];
 	counter.innerHTML = moves;
+    /*reseting the values of stars*/
 	for (let i= 0; i < stars.length; i++){
 		stars[i].style.color = "red";
 		stars[i].style.visibility = "visible";
 	}
+    /*reseting the value of timer*/
 	second = 0;
 	minute = 0;
     hour = 0;
@@ -67,11 +76,14 @@ function shuffle(array) {
 /* function to add the fa fa-list property*/
 function addProperty() {
 for (let j = 0; j< arr.length; j++) {
+    /*create list*/
 	let lis= document.createElement("li");
+    /*create <i> for all the fa-class items*/
 	let lis_item= document.createElement("i");
 	lis.classList.add("card");
 	let lis_item_class_name = "fa-"+ arr[j];
 	lis_item.classList.add("fa", lis_item_class_name);
+    /*apend all the created elements to  the deck*/
 	lis.appendChild(lis_item);
 	deck.appendChild(lis);
 }
@@ -81,7 +93,9 @@ for (let j = 0; j< arr.length; j++) {
 function eventListener() {
 for(let i = 0; i<arr.length; i++){
 cards[i].addEventListener('click', function(){
+    /*show the cards*/
 	show(i);
+    /*all other functions are called within this function*/
 	cardOpen(arr[i], i);
 });
 }
