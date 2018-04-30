@@ -127,6 +127,7 @@ function itsMatch(card_1, card_2, c, d){
     if(c!=d){
 	cards[c].classList.toggle("match");
 	cards[d].classList.toggle("match");
+    /*if cards are matched then disable the event on of click on that card*/
     cards[c].style.pointerEvents = 'none';
     cards[d].style.pointerEvents = 'none';
 	card_open.pop();
@@ -138,7 +139,7 @@ function itsMatch(card_1, card_2, c, d){
 	if (matchedCard.length == 16){
 		gameOver();
 	}
-} else {
+} /*if the same card is clicked again and again it won't increase the moves*/ else {
     card_open.pop();
     card_open.pop();
     posi.pop();
@@ -151,9 +152,15 @@ function notMatch(rcard_1, rcard_2, e, f){
     if(e!=f){
 	cards[e].classList.toggle("unmatch");
 	cards[f].classList.toggle("unmatch");
+    /*to disable the mouse pointer for a time*/
+    cards[e].style.pointerEvents = 'none';
+    cards[f].style.pointerEvents = 'none';
 	setTimeout(function(){
         cards[e].classList.remove("show", "open", "unmatch");
         cards[f].classList.remove("show", "open", "unmatch");
+        /*to enable the mouse event back again*/
+        cards[e].style.pointerEvents = 'auto';
+        cards[f].style.pointerEvents = 'auto';
         openedCards = [];
     },1000);
     card_open.pop();
@@ -161,7 +168,7 @@ function notMatch(rcard_1, rcard_2, e, f){
 	posi.pop();
 	posi.pop();
     countMoves();
-} else{
+} /*if the same card is clicked again and again it won't increase the moves*/ else{
     card_open.pop();
     card_open.pop();
     posi.pop();
@@ -182,15 +189,15 @@ function countMoves(){
         startTimer();
     }
     /*displaying the number of stars based on the user moves*/
-    /*if moves of the user <20 he/she will get 3 stars else if the moves of the user is between 21 to 15 he/she will get 2 stars otherwise 1 star*/
-    if (moves > 20 && moves < 30){
+    /*if moves of the user <10 he/she will get 3 stars else if the moves of the user is between 11 to 15 he/she will get 2 stars, otherwise 1 star*/
+    if (moves > 10 && moves < 15){
         for( i= 0; i < 3; i++){
             if(i > 1){
                 stars[i].style.visibility = "hidden";
             }
         }
     }
-    else if (moves > 30){
+    else if (moves > 15){
         for( i= 0; i < 3; i++){
             if(i > 0){
                 stars[i].style.visibility = "hidden";
