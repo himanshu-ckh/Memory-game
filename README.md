@@ -2,6 +2,8 @@
 # Info
 This is a game called memory game which checks your memory.
 Their are total of 16 cards in the game.
+# Setup
+To setup the game you just need to open the index.html file, and it will load it in your browser.
 # Conditions
 When a user clicks on any card it will increment the move counter and the timer will start.
 # Display
