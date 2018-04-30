@@ -3,7 +3,7 @@
 This is a game called memory game which checks your memory.
 Their are total of 16 cards in the game.
 # Conditions
-When a user clicks on any card it will increment the move counter but the timer will start after two moves are made beacuse basically the game starts only if two moves are made.
+When a user clicks on any card it will increment the move counter and the timer will start.
 # Display
 Finally a model appears which display the related details for a game.
 There is a button on the model which asks the user to play again?

@@ -109,8 +109,6 @@ cards[a].classList.toggle('show');
 
 /*function to add the cards to the card_open list*/
 function cardOpen(wCard, b){
-    /*count the number of moves*/
-	countMoves();
 	card_open.push(wCard);
 	posi.push(b);
 	cardLength = card_open.length;
@@ -126,20 +124,31 @@ function cardOpen(wCard, b){
 
 /*if cards are match the showing it in the html*/
 function itsMatch(card_1, card_2, c, d){
+    if(c!=d){
 	cards[c].classList.toggle("match");
 	cards[d].classList.toggle("match");
+    cards[c].style.pointerEvents = 'none';
+    cards[d].style.pointerEvents = 'none';
 	card_open.pop();
 	card_open.pop();
 	posi.pop();
 	posi.pop();
+    countMoves();
 	matchedCard.push(card_1, card_2);
 	if (matchedCard.length == 16){
 		gameOver();
 	}
+} else {
+    card_open.pop();
+    card_open.pop();
+    posi.pop();
+    posi.pop();
+}
 };
 
 /*if the cards do not match then removing the classes corresponding to it*/
 function notMatch(rcard_1, rcard_2, e, f){
+    if(e!=f){
 	cards[e].classList.toggle("unmatch");
 	cards[f].classList.toggle("unmatch");
 	setTimeout(function(){
@@ -151,8 +160,14 @@ function notMatch(rcard_1, rcard_2, e, f){
 	card_open.pop();
 	posi.pop();
 	posi.pop();
+    countMoves();
+} else{
+    card_open.pop();
+    card_open.pop();
+    posi.pop();
+    posi.pop();
+}
 };
-
 /*to count the number of moves and the time calculated to complete the game*/
 /*the moves are added only when two cards are selected.*/
 function countMoves(){
